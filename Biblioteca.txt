@@ -1,0 +1,19 @@
+Bibliotecas (módulos de la librería estándar de Python) utilizadas en el proyecto:
+
+- abc (ABC, abstractmethod): usado en modelos/mision.py para definir la clase
+  abstracta Mision y sus métodos abstractos iniciar()/finalizar().
+  (Presente en ambos archivos originales, EEUU y Rusia).
+
+- enum (Enum): usado en modelos/estado_mision.py para definir EstadoMision.
+  (Exclusivo del archivo de EEUU).
+
+- time: usado en utils/menu.py para la animación de puntos suspensivos al
+  salir del sistema.
+  (Exclusivo del archivo de EEUU).
+
+No se agregó ninguna biblioteca externa ni de terceros; solo se reorganizaron
+los imports ya existentes en los archivos originales, manteniéndolos
+únicamente en los módulos donde son necesarios.
+
+
+https://claude.ai/share/92c3effc-16c0-4956-94e2-70f6cf10b47c
