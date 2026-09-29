@@ -18,10 +18,9 @@ from modelos.estado_mision import EstadoMision
 # NO se conservan set_destino(), set_duracion(), get_destino() ni
 # get_duracion() del archivo de Rusia: esos métodos dependen de los atributos
 # "destino" y "duracion", que pertenecían a la clase MisionEspacial de Rusia.
-# Esa clase no tiene un archivo asignado en la estructura obligatoria del
-# proyecto (que exige mision_exploracion.py, mision_investigacion.py y
-# mision_rescate.py, propios de EEUU), y agregar esos atributos a la jerarquía
-# elegida violaría la restricción de no crear atributos nuevos.
+# Esa clase no existe en la idea del codigo actual (que exige mision_exploracion.py, 
+# mision_investigacion.py y mision_rescate.py, propios de EEUU), y agregar esos 
+# atributos a la jerarquía elegida crearia atributos nuevos.
 class Mision(ABC):
     def __init__(self, codigo, nombre):
         self.__codigo = codigo.strip()
