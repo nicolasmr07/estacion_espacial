@@ -2,13 +2,11 @@ from modelos.mision import Mision
 from modelos.estado_mision import EstadoMision
 
 
-# Misión de tipo exploración. Exclusiva del archivo de EEUU, se conserva sin
-# cambios: agrega el atributo propio "planeta" y define su propia lógica de
-# iniciar()/finalizar().
+# Misión de exploración en un planeta.
 class MisionExploracion(Mision):
     def __init__(self, codigo, nombre, planeta):
-        super().__init__(codigo, nombre)   # Llama al constructor de la superclase
-        self.planeta = planeta             # Atributo propio
+        super().__init__(codigo, nombre)
+        self.planeta = planeta
 
     def iniciar(self):
         if self.get_estado() == EstadoMision.PLANIFICADA:

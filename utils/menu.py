@@ -6,16 +6,8 @@ from modelos.mision_investigacion import MisionInvestigacion
 from modelos.mision_rescate import MisionRescate
 
 
-# Clase que representa el menú interactivo por consola.
-#
-# Es la funcionalidad que estaba duplicada conceptualmente en ambos archivos
-# (Menu.ejecutar() en EEUU y menu() en Rusia). Se conserva la lógica de
-# registro de misiones de EEUU tal cual (opción "1"), porque es la única
-# compatible con las subclases de Mision elegidas (pide planeta/area/
-# tripulación según el tipo). A esa base se le agregan, sin modificar su
-# lógica interna, las opciones exclusivas de Rusia: buscar misión, cambiar
-# estado y mostrar resumen (opciones "3", "4" y "5"), renumerando el menú
-# para que todas las funcionalidades de ambos archivos convivan.
+# Menú principal del programa. Aquí se pueden registrar, buscar y cambiar
+# el estado de las misiones.
 class Menu:
     def __init__(self):
         self.estacion = EstacionEspacial()
@@ -38,7 +30,7 @@ class Menu:
                 continue
 
             match int(opcion):
-                # --- Registrar misión (lógica original de EEUU, sin cambios) ---
+                # Registrar una misión según su tipo.
                 case 1:
                     nombre = input("Nombre de la misión: ")
                     if not nombre.replace(" ", "").isalpha():
@@ -63,11 +55,11 @@ class Menu:
                         continue
                     self.estacion.agregar_mision(mision)
 
-                # --- Mostrar misiones (lógica original de EEUU, sin cambios) ---
+                # Mostrar todas las misiones registradas.
                 case 2:
                     self.estacion.mostrar_misiones()
 
-                # --- Buscar misión (funcionalidad exclusiva de Rusia) ---
+                # Buscar una misión por código o por nombre.
                 case 3:
                     print("\n1. Buscar por código")
                     print("2. Buscar por nombre")
@@ -95,18 +87,16 @@ class Menu:
                         case _:
                             print("Opción inválida.")
 
-                # --- Cambiar estado (funcionalidad exclusiva de Rusia) ---
+                # Cambiar el estado de una misión.
                 case 4:
                     codigo = input("Ingrese el código de la misión: ")
                     self.estacion.cambiar_estado(codigo)
 
-                # --- Mostrar resumen (funcionalidad exclusiva de Rusia) ---
+                # Mostrar cuántas misiones hay en cada estado.
                 case 5:
                     self.estacion.mostrar_resumen()
 
-                # --- Iniciar misión (lógica original de EEUU; se reutiliza
-                #     buscar_por_codigo(), ya conservado, en vez de repetir el
-                #     mismo bucle manual) ---
+                # Buscar la misión y luego iniciarla.
                 case 6:
                     codigo = input("Ingrese el código de la misión a iniciar: ")
                     mision = self.estacion.buscar_por_codigo(codigo)
@@ -115,7 +105,7 @@ class Menu:
                     else:
                         print("Misión no encontrada.")
 
-                # --- Finalizar misión (lógica original de EEUU) ---
+                # Buscar la misión y luego finalizarla.
                 case 7:
                     codigo = input("Ingrese el código de la misión a finalizar: ")
                     mision = self.estacion.buscar_por_codigo(codigo)
@@ -124,7 +114,7 @@ class Menu:
                     else:
                         print("Misión no encontrada.")
 
-                # --- Salir (lógica original de EEUU, con animación) ---
+                # Mostrar unos puntos antes de salir.
                 case 0:
                     print("Saliendo del sistema", end="", flush=True)
                     for _ in range(3):

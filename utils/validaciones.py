@@ -1,6 +1,4 @@
-# Función de validación exclusiva del archivo de Rusia. Verifica que un
-# texto esté compuesto únicamente por palabras alfabéticas (se usaba para
-# validar nombre y destino de una misión). Se conserva exactamente igual.
+# Revisa que el texto tenga una o más palabras y que solo use letras.
 def validar_texto(texto):
     palabras = texto.split()
     if len(palabras) == 0:

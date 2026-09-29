@@ -2,13 +2,11 @@ from modelos.mision import Mision
 from modelos.estado_mision import EstadoMision
 
 
-# Misión de tipo rescate. Exclusiva del archivo de EEUU, se conserva sin
-# cambios: agrega el atributo propio "tripulacion" y su propia lógica de
-# iniciar()/finalizar().
+# Misión de rescate, con la tripulación que se va a rescatar.
 class MisionRescate(Mision):
     def __init__(self, codigo, nombre, tripulacion):
         super().__init__(codigo, nombre)
-        self.tripulacion = tripulacion   # Atributo propio
+        self.tripulacion = tripulacion
 
     def iniciar(self):
         if self.get_estado() == EstadoMision.PLANIFICADA:
